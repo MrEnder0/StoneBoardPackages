@@ -10,7 +10,7 @@ def startHome():
   pygame.display.set_caption('StoneBoard Home')
   (width, height) = (1500, 1000)
   screen = pygame.display.set_mode((width, height))
-  home_background_colour = (255,171,252)
+  home_background_colour = (41,60,57)
   screen.fill(home_background_colour)
   print("Launched Home")
   done = False
