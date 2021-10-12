@@ -1,6 +1,9 @@
+from getmac import get_mac_address as gma
 from config import *
 import pygame
 import time
+import uuid
+import os
 
 def startHome():
   pygame.quit()
@@ -12,6 +15,19 @@ def startHome():
   screen.fill(home_background_colour)
   print("Launched Home")
   run = True
+
+  oldUser = os.path.isfile('storage/user.txt')
+
+  if oldUser:
+    print("Logged In!")
+  else:
+    print("No useraccount found creating new.")
+    userFilePath = 'storage/user.txt'
+    useruuid = uuid.uuid4()
+    with open(userFilePath, 'w') as user:
+      user.write(str(useruuid))
+  
+  #boldFont = pygame.font.Font('experimental/StoneBoardPackagesexperimental/assets/fonts/Silkscreen/slkscr.ttf', 62)
 
   if Experintal == True:
     stoneBoard_experimentalRelease = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/stoneBoard_experimentalRelease.png').convert_alpha()
@@ -25,8 +41,6 @@ def startHome():
   stoneBoard_logo_rectangle = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/stoneBoard_logo_rectangle.png').convert_alpha()
   stoneBoard_logo_rectangle = pygame.transform.scale(stoneBoard_logo_rectangle, (400, 200))
   screen.blit(stoneBoard_logo_rectangle,(1180,-130))
-
-  #Buttons
 
   button_img = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/bottom_bar.png').convert_alpha()
 
