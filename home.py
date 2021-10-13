@@ -16,19 +16,21 @@ def startHome():
   print("Launched Home")
   run = True
 
+  #Test if existing user
   oldUser = os.path.isfile('storage/user.txt')
 
   if oldUser:
+    newUserWindow = False
     print("Logged In!")
   else:
     print("No useraccount found creating new.")
+    newUserWindow = True
     userFilePath = 'storage/user.txt'
     useruuid = uuid.uuid4()
     with open(userFilePath, 'w') as user:
       user.write(str(useruuid))
-  
-  #boldFont = pygame.font.Font('experimental/StoneBoardPackagesexperimental/assets/fonts/Silkscreen/slkscr.ttf', 62)
 
+  #Experimental indicator
   if Experintal == True:
     stoneBoard_experimentalRelease = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/stoneBoard_experimentalRelease.png').convert_alpha()
     stoneBoard_experimentalRelease = pygame.transform.scale(stoneBoard_experimentalRelease, (120, 120))
@@ -42,7 +44,9 @@ def startHome():
   stoneBoard_logo_rectangle = pygame.transform.scale(stoneBoard_logo_rectangle, (400, 200))
   screen.blit(stoneBoard_logo_rectangle,(1180,-130))
 
-  button_img = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/bottom_bar.png').convert_alpha()
+  boldFont = pygame.font.Font('experimental/StoneBoardPackagesexperimental/assets/fonts/Silkscreen/slkscr.ttf', 22)
+  bottomBar = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/bottom_bar.png').convert_alpha()
+  newUserScreen = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/newUserScreen.png').convert_alpha()
 
   class Button():
     def __init__(self, x, y, image, scale):
@@ -55,15 +59,18 @@ def startHome():
     def draw(self):
       screen.blit(self.image, (self.rect.x, self.rect.y))
 
-
-  start_button = Button(-5, 920, button_img, 0.266)
+  bottomBar = Button(-5, 920, bottomBar, 0.266)
+  newUserScreen = Button(466, 60, newUserScreen, 1)
 
   while run:
     screen.fill(home_background_colour)
     screen.blit(stoneBoard_logo_rectangle,(1180,-135))
     screen.blit(stoneBoard_experimentalRelease,(0,-35))
     screen.blit(stoneBoard_logo,(1200,10))
-    start_button.draw()
+    if newUserWindow:
+      newUserScreen.draw()
+      screen.blit(boldFont.render(str(useruuid), 0, (200, 200, 240)), (475, 565))
+    bottomBar.draw()
     pygame.display.flip()
 
     for event in pygame.event.get():
