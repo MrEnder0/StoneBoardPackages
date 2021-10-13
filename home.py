@@ -1,4 +1,4 @@
-from experimental.StoneBoardPackagesexperimental.music import *
+from experimental.StoneBoardPackagesexperimental.soundManager import *
 from getmac import get_mac_address as gma
 from config import *
 import pygame
