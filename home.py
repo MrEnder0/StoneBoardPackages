@@ -88,6 +88,7 @@ def startHome():
     if newUserWindow:
       if newUserScreen.draw():
         newUserWindow = False
+        clickSound()
       screen.blit(boldFont.render(str(useruuid), 0, (200, 200, 240)), (475, 565))
 
     bottomBar.draw()
