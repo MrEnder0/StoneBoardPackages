@@ -1,3 +1,4 @@
+from experimental.StoneBoardPackagesexperimental.music import *
 from getmac import get_mac_address as gma
 from config import *
 import pygame
@@ -16,6 +17,8 @@ def startHome():
   print("Launched Home")
   #print(gma())
   run = True
+  
+  music()
 
   #Test if existing user
   oldUser = os.path.isfile('storage/user.txt')
