@@ -50,6 +50,7 @@ def startHome():
 
   boldFont = pygame.font.Font('experimental/StoneBoardPackagesexperimental/assets/fonts/Silkscreen/slkscr.ttf', 22)
   bottomBar = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/bottom_bar.png').convert_alpha()
+  exitButton = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/exit.png').convert_alpha()
   newUserScreen = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/newUserScreen.png').convert_alpha()
 
   class Button():
@@ -77,23 +78,33 @@ def startHome():
 
       return action
 
-  bottomBar = Button(-5, 920, bottomBar, 0.266)
   newUserScreen = Button(466, 60, newUserScreen, 1)
+  bottomBar = Button(-5, 920, bottomBar, 0.266)
+  exitButton = Button(1420, 928, exitButton, 0.13)
 
   while run:
     screen.fill(home_background_colour)
     screen.blit(stoneBoard_logo_rectangle,(1180,-135))
     screen.blit(stoneBoard_experimentalRelease,(0,-35))
     screen.blit(stoneBoard_logo,(1200,10))
+    bottomBar.draw()
+    
+    if exitButton.draw():
+        clickSound()
+        time.sleep(0.6)
+        run = False
+        
     if newUserWindow:
       if newUserScreen.draw():
         newUserWindow = False
         clickSound()
       screen.blit(boldFont.render(str(useruuid), 0, (200, 200, 240)), (475, 565))
 
-    bottomBar.draw()
     pygame.display.flip()
 
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
         run = False
+        
+  pygame.quit()
+  quit()
