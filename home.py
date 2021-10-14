@@ -1,4 +1,4 @@
-from experimental.StoneBoardPackagesexperimental.soundManager import *
+from stable.StoneBoardPackagesstable.soundManager import *
 from getmac import get_mac_address as gma
 from config import *
 import pygame
@@ -36,21 +36,21 @@ def startHome():
 
   #Experimental indicator
   if Experintal == True:
-    stoneBoard_experimentalRelease = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/stoneBoard_experimentalRelease.png').convert_alpha()
+    stoneBoard_experimentalRelease = pygame.image.load('stable/StoneBoardPackagesstable/assets/stoneBoard_experimentalRelease.png').convert_alpha()
     stoneBoard_experimentalRelease = pygame.transform.scale(stoneBoard_experimentalRelease, (120, 120))
     screen.blit(stoneBoard_experimentalRelease,(0,-35))
 
-  stoneBoard_logo = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/stoneBoard_logo.png').convert_alpha()
+  stoneBoard_logo = pygame.image.load('stable/StoneBoardPackagesstable/assets/stoneBoard_logo.png').convert_alpha()
   stoneBoard_logo = pygame.transform.scale(stoneBoard_logo, (288, 28))
   screen.blit(stoneBoard_logo,(1200,10))
   
-  stoneBoard_logo_rectangle = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/stoneBoard_logo_rectangle.png').convert_alpha()
+  stoneBoard_logo_rectangle = pygame.image.load('stable/StoneBoardPackagesstable/assets/stoneBoard_logo_rectangle.png').convert_alpha()
   stoneBoard_logo_rectangle = pygame.transform.scale(stoneBoard_logo_rectangle, (400, 200))
   screen.blit(stoneBoard_logo_rectangle,(1180,-130))
 
-  boldFont = pygame.font.Font('experimental/StoneBoardPackagesexperimental/assets/fonts/Silkscreen/slkscr.ttf', 22)
-  bottomBar = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/bottom_bar.png').convert_alpha()
-  newUserScreen = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/newUserScreen.png').convert_alpha()
+  boldFont = pygame.font.Font('stable/StoneBoardPackagesstable/assets/fonts/Silkscreen/slkscr.ttf', 22)
+  bottomBar = pygame.image.load('stable/StoneBoardPackagesstable/assets/bottom_bar.png').convert_alpha()
+  newUserScreen = pygame.image.load('stable/StoneBoardPackagesstable/assets/newUserScreen.png').convert_alpha()
 
   class Button():
     def __init__(self, x, y, image, scale):
