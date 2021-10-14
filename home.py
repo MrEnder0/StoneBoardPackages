@@ -1,3 +1,4 @@
+from experimental.StoneBoardPackagesexperimental.soundManager import *
 from getmac import get_mac_address as gma
 from config import *
 import pygame
@@ -14,7 +15,10 @@ def startHome():
   home_background_colour = (250,250,250)
   screen.fill(home_background_colour)
   print("Launched Home")
+  #print(gma())
   run = True
+  
+  music()
 
   #Test if existing user
   oldUser = os.path.isfile('storage/user.txt')
@@ -55,9 +59,23 @@ def startHome():
       self.image = pygame.transform.scale(image, (int(width * scale), int(height * scale)))
       self.rect = self.image.get_rect()
       self.rect.topleft = (x, y)
+      self.clicked = False
 
     def draw(self):
+      action = False
+      pos = pygame.mouse.get_pos()
+
+      if self.rect.collidepoint(pos):
+        if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
+          self.clicked = True
+          action = True
+
+      if pygame.mouse.get_pressed()[0] == 0:
+        self.clicked = False
+      
       screen.blit(self.image, (self.rect.x, self.rect.y))
+
+      return action
 
   bottomBar = Button(-5, 920, bottomBar, 0.266)
   newUserScreen = Button(466, 60, newUserScreen, 1)
@@ -68,8 +86,11 @@ def startHome():
     screen.blit(stoneBoard_experimentalRelease,(0,-35))
     screen.blit(stoneBoard_logo,(1200,10))
     if newUserWindow:
-      newUserScreen.draw()
+      if newUserScreen.draw():
+        newUserWindow = False
+        clickSound()
       screen.blit(boldFont.render(str(useruuid), 0, (200, 200, 240)), (475, 565))
+
     bottomBar.draw()
     pygame.display.flip()
 
