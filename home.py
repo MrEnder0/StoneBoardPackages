@@ -87,8 +87,11 @@ def startHome():
     screen.blit(stoneBoard_logo_rectangle,(1180,-135))
     screen.blit(stoneBoard_experimentalRelease,(0,-35))
     screen.blit(stoneBoard_logo,(1200,10))
-    bottomBar.draw()
-    
+
+    if bottomBar.draw():
+        caveManSound()
+        print("Cave Man Secret Sound")
+
     if exitButton.draw():
         clickSound()
         time.sleep(0.6)
