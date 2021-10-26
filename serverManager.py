@@ -18,4 +18,9 @@ def createServer():
     serveruuid = uuid.uuid4()
     serverPath = "storage/servers/" + str(serveruuid)
     os.renames("storage/servers/createdServer", serverPath)
-
+    
+    userFilePath = 'storage/user.txt'
+    with open(userFilePath, 'r') as userId:
+        userUuid = userId.read()
+    with open('storage/servers/createdServer/serverOwner.txt', 'w') as serverOwnerId:
+        serverOwnerId.write(userUuid)
