@@ -1,3 +1,4 @@
+from experimental.StoneBoardPackagesexperimental.serverManager import *
 from experimental.StoneBoardPackagesexperimental.soundManager import *
 from getmac import get_mac_address as gma
 from config import *
@@ -15,7 +16,9 @@ def startHome():
   home_background_colour = (250,250,250)
   screen.fill(home_background_colour)
   print("Launched Home")
-  #print(gma())
+  
+  userFilePath = 'storage/user.txt'
+  menuId = 0
   run = True
   
   music()
@@ -29,7 +32,6 @@ def startHome():
   else:
     print("No useraccount found creating new.")
     newUserWindow = True
-    userFilePath = 'storage/user.txt'
     useruuid = uuid.uuid4()
     with open(userFilePath, 'w') as user:
       user.write(str(useruuid))
@@ -82,15 +84,15 @@ def startHome():
   bottomBar = Button(-5, 920, bottomBar, 0.266)
   exitButton = Button(1420, 928, exitButton, 0.13)
 
+  createServer()
+
   while run:
     screen.fill(home_background_colour)
     screen.blit(stoneBoard_logo_rectangle,(1180,-135))
     screen.blit(stoneBoard_experimentalRelease,(0,-35))
     screen.blit(stoneBoard_logo,(1200,10))
 
-    if bottomBar.draw():
-        caveManSound()
-        print("Cave Man Secret Sound")
+    bottomBar.draw()
 
     if exitButton.draw():
         clickSound()
