@@ -5,10 +5,6 @@ import shutil
 import uuid
 import os
 
-userFilePath = 'storage/user.txt'
-with open(userFilePath, 'r') as userId:
-    useruuid = userId.read()
-
 def createServer():
     #delete old failed servers without error
     try:
@@ -16,7 +12,10 @@ def createServer():
         shutil.rmtree("storage/servers/createdServer")
     except:
         pass
+    
     #create basic servcer file structure
     os.mkdir('storage/servers/createdServer')
-    with open('storage/servers/createdServer/serverOwner.txt', 'w') as serverOwnerId:
-        serverOwnerId.write(useruuid)
+    serveruuid = uuid.uuid4()
+    serverPath = "storage/servers/" + str(serveruuid)
+    os.renames("storage/servers/createdServer", serverPath)
+
