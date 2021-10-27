@@ -10,21 +10,21 @@ import os
 def startHome():
   pygame.quit()
   pygame.init()
-  pygame.display.set_caption('StoneBoard Home')
+  pygame.display.set_caption("StoneBoard Home")
   (width, height) = (1500, 1000)
   screen = pygame.display.set_mode((width, height), pygame.NOFRAME)
   home_background_colour = (250,250,250)
   screen.fill(home_background_colour)
   print("Launched Home")
   
-  userFilePath = 'storage/user.txt'
+  userFilePath = "storage/user.txt"
   menuId = 0
   run = True
   
   music()
 
   #Test if existing user
-  oldUser = os.path.isfile('storage/user.txt')
+  oldUser = os.path.isfile("storage/user.txt")
 
   if oldUser:
     newUserWindow = False
@@ -33,16 +33,16 @@ def startHome():
     print("No useraccount found creating new.")
     newUserWindow = True
     useruuid = uuid.uuid4()
-    with open(userFilePath, 'w') as user:
+    with open(userFilePath, "w") as user:
       user.write(str(useruuid))
 
   #Experimental indicator
   if Experintal == True:
-    stoneBoard_experimentalRelease = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/stoneBoard_experimentalRelease.png').convert_alpha()
+    stoneBoard_experimentalRelease = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/stoneBoard_experimentalRelease.png").convert_alpha()
     stoneBoard_experimentalRelease = pygame.transform.scale(stoneBoard_experimentalRelease, (120, 120))
     screen.blit(stoneBoard_experimentalRelease,(0,-35))
 
-  stoneBoard_logo = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/stoneBoard_logo.png').convert_alpha()
+  stoneBoard_logo = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/stoneBoard_logo.png").convert_alpha()
   stoneBoard_logo = pygame.transform.scale(stoneBoard_logo, (288, 28))
   screen.blit(stoneBoard_logo,(1200,10))
   
@@ -50,10 +50,10 @@ def startHome():
   stoneBoard_logo_rectangle = pygame.transform.scale(stoneBoard_logo_rectangle, (400, 200))
   screen.blit(stoneBoard_logo_rectangle,(1180,-130))
 
-  boldFont = pygame.font.Font('experimental/StoneBoardPackagesexperimental/assets/fonts/Silkscreen/slkscr.ttf', 22)
-  bottomBar = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/bottom_bar.png').convert_alpha()
-  exitButton = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/exit.png').convert_alpha()
-  newUserScreen = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/newUserScreen.png').convert_alpha()
+  boldFont = pygame.font.Font("experimental/StoneBoardPackagesexperimental/assets/fonts/Silkscreen/slkscr.ttf", 22)
+  bottomBar = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/bottom_bar.png").convert_alpha()
+  exitButton = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/exit.png").convert_alpha()
+  newUserScreen = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/newUserScreen.png").convert_alpha()
 
   class Button():
     def __init__(self, x, y, image, scale):
