@@ -33,8 +33,9 @@ def createServer():
 def loadServer():
     serversFolder = "storage/servers/createdServer/"
     serverName = "0"
-    openedServer = serverFolder + serverPath
+    openedServer = serverFolder + serverName
     serverDataFile = openedServer + "/serverData.txt"
+    serverOwnerFile = openedServer + "/serverOwner.txt"
     
     f = open(serverDataFile, "r")
     line = f.readline()
