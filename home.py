@@ -124,6 +124,7 @@ def startHome():
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
         run = False
-        
+  
+  #Working on instant quit thing
   pygame.quit()
   quit()
