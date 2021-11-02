@@ -107,6 +107,7 @@ def startHome():
         menu = 1
 
     if menu == 1:
+      readServers()
       screen.blit(stoneBoard_server_ui,(350,200))
       
       if serverUiCreate.draw():
