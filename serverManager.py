@@ -41,4 +41,24 @@ def loadServer():
     line = f.readline()
     print(line)
     f.close()
-    
+
+def readServers():
+    rootdir = 'storage/servers'
+    dirD = 'storage/servers\\'
+    final = ''
+    for file in os.listdir(rootdir):
+        before = os.path.join(rootdir, file)
+        after = before.replace(dirD, "\n")
+        final = (final + after)
+    print(final)
+
+    serversFilePath = "storage/serversList.txt"
+    isServerList = os.path.isfile("storage/serversList.txt")
+
+    if isServerList:
+        os.remove(serversFilePath)
+        with open(serversFilePath, "w") as serversList:
+            serversList.write(str(final))
+    else:
+        with open(serversFilePath, "w") as serversList:
+            serversList.write(str(final))
