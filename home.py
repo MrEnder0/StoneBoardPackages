@@ -104,7 +104,6 @@ def startHome():
 
     if serverUiOpen.draw():
         clickSound()
-        time.sleep(0.6)
         menu = 1
 
     if menu == 1:
@@ -115,8 +114,9 @@ def startHome():
         createServer()
       
       if serverUiAccept.draw():
-        #Add code to launch the board and close the home page
-      
+        clickSound()
+        #add code for board launcher
+
       if serverUiExit.draw():
         clickSound()
         time.sleep(0.6)
