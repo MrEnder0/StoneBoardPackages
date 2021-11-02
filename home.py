@@ -51,6 +51,7 @@ def startHome():
 
   exitButton = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/exit.png").convert_alpha()
   joinButton = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/join.png").convert_alpha()
+  acceptButton = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/accept.png").convert_alpha()
   boldFont = pygame.font.Font("experimental/StoneBoardPackagesexperimental/assets/fonts/Silkscreen/slkscr.ttf", 22)
   bottomBar = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/bottom_bar.png").convert_alpha()
   newUserScreen = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/newUserScreen.png").convert_alpha()
@@ -82,11 +83,11 @@ def startHome():
 
   serverUiExit = Button(1060, 626, minimizeButton, 0.13)
   serverUiOpen = Button(10, 928, joinButton, 0.13)
+  serverUiCreate = Button(370, 626, joinButton, 0.13)
+  serverUiAccept = Button(445, 626, acceptButton, 0.13)
   newUserScreen = Button(466, 60, newUserScreen, 1)
   bottomBar = Button(-5, 920, bottomBar, 0.266)
   exitButton = Button(1420, 928, exitButton, 0.13)
-
-  createServer()
 
   while run:
     screen.fill(home_background_colour)
@@ -108,6 +109,14 @@ def startHome():
 
     if menu == 1:
       screen.blit(stoneBoard_server_ui,(350,200))
+      
+      if serverUiCreate.draw():
+        clickSound()
+        createServer()
+      
+      if serverUiAccept.draw():
+        #Add code to launch the board and close the home page
+      
       if serverUiExit.draw():
         clickSound()
         time.sleep(0.6)
