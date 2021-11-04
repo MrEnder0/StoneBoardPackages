@@ -43,6 +43,7 @@ def loadServer():
     f.close()
 
 def readServers():
+    #Read all folder names and put in varible
     rootdir = 'storage/servers'
     dirD = 'storage/servers\\'
     final = ''
@@ -50,11 +51,11 @@ def readServers():
         before = os.path.join(rootdir, file)
         after = before.replace(dirD, "\n")
         final = (final + after)
-    print(final)
 
     serversFilePath = "storage/serversList.txt"
     isServerList = os.path.isfile("storage/serversList.txt")
 
+    #Write as file
     if isServerList:
         os.remove(serversFilePath)
         with open(serversFilePath, "w") as serversList:
