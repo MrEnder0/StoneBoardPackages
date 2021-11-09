@@ -5,7 +5,7 @@ import pygame
 import time
 import uuid
 import os
-
+import webbrowser
 def startHome():
   pygame.quit()
   pygame.init()
@@ -19,6 +19,8 @@ def startHome():
   userFilePath = "storage/user.txt"
   run = True
   menu = 0
+
+  #webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=2)
   
   music()
 
@@ -108,7 +110,14 @@ def startHome():
 
     if menu == 1:
       readServers()
+      lineNum = 0
       screen.blit(stoneBoard_server_ui,(350,200))
+      with open('storage/serversList.txt', 'r') as serversList:
+        for line in serversList:
+           lineNum += 45
+           lineText = line
+           lineText = lineText[:-1]
+           screen.blit(boldFont.render(str(lineText), 0, (200, 200, 240)), (450, 260 + lineNum))
       
       if serverUiCreate.draw():
         clickSound()
