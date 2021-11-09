@@ -54,6 +54,7 @@ def readServers():
 
     serversFilePath = "storage/serversList.txt"
     isServerList = os.path.isfile("storage/serversList.txt")
+    final = final[1:]
 
     #Write as file
     if isServerList:
