@@ -46,11 +46,9 @@ def loadServer():
     openedServer = serversFolder + serverName
     serverDataFile = openedServer + "/serverData.txt"
     serverOwnerFile = openedServer + "/serverOwner.txt"
-    
-    serverData = open(serverDataFile, "r")
-    data = serverData.readline()
-    print(data)
-    serverData.close()
+
+    with open("storage/openedServer.txt", "w") as serverOpen:
+        serverOpen.write(openedServer)
 
 def readServers():
     #Read all folder names and put in varible
