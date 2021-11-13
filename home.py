@@ -1,5 +1,6 @@
 from experimental.StoneBoardPackagesexperimental.serverManager import *
 from experimental.StoneBoardPackagesexperimental.soundManager import *
+from experimental.StoneBoardPackagesexperimental.board import *
 from config import *
 import pygame
 import time
@@ -137,8 +138,8 @@ def startHome():
 
       if serverUiAccept.draw():
         clickSound()
-        #add code for board launcher
         loadServer()
+        launchLoadedServer()
 
       if serverUiExit.draw():
         clickSound()
