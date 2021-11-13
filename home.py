@@ -15,8 +15,9 @@ def startHome():
   home_background_colour = (250,250,250)
   screen.fill(home_background_colour)
   print("Launched Home")
-  
+
   userFilePath = "storage/user.txt"
+  menuSelectLine = 1
   run = True
   menu = 0
 
@@ -110,14 +111,29 @@ def startHome():
 
     if menu == 1:
       readServers()
-      lineNum = 0
+      lineDistance = 0
+      lineCount = 0
       screen.blit(stoneBoard_server_ui,(350,200))
       with open('storage/serversList.txt', 'r') as serversList:
         for line in serversList:
-           lineNum += 45
+           lineDistance += 40
+           lineCount += 1
            lineText = line
            lineText = lineText[:-1]
-           screen.blit(boldFont.render(str(lineText), 0, (200, 200, 240)), (450, 260 + lineNum))
+           screen.blit(boldFont.render(str(lineText), 0, (200, 200, 240)), (450, 260 + lineDistance))
+
+      key_input = pygame.key.get_pressed()   
+      if key_input[pygame.K_UP]:
+        if not menuSelectLine == 1:
+          menuSelectLine += -1
+          time.sleep(0.2)
+      if key_input[pygame.K_DOWN]:
+        if not menuSelectLine == lineCount:
+          menuSelectLine += 1
+          time.sleep(0.2)
+
+      with open("storage/selectedLine.txt", "w") as selectedLine:
+        selectedLine.write(str(menuSelectLine))
       
       if serverUiCreate.draw():
         clickSound()
