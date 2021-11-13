@@ -1,5 +1,8 @@
-from experimental.StoneBoardPackagesexperimental.serverManager import *
-from experimental.StoneBoardPackagesexperimental.soundManager import *
+
+from stable.StoneBoardPackagesstable.serverManager import *
+from stable.StoneBoardPackagesstable.soundManager import *
+from stable.StoneBoardPackagesstable.soundManager import *
+from getmac import get_mac_address as gma
 from config import *
 import pygame
 import time
@@ -38,28 +41,26 @@ def startHome():
     with open(userFilePath, "w") as user:
       user.write(str(useruuid))
 
-  #Experimental indicator
-  if Experintal == True:
-    stoneBoard_experimentalRelease = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/stoneBoard_experimentalRelease.png").convert_alpha()
-    stoneBoard_experimentalRelease = pygame.transform.scale(stoneBoard_experimentalRelease, (120, 120))
-
   stoneBoard_logo = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/stoneBoard_logo.png").convert_alpha()
+
+  stoneBoard_logo = pygame.image.load('stable/StoneBoardPackagesstable/assets/stoneBoard_logo.png').convert_alpha()
+
   stoneBoard_logo = pygame.transform.scale(stoneBoard_logo, (288, 28))
   
-  stoneBoard_logo_rectangle = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/stoneBoard_logo_rectangle.png').convert_alpha()
+  stoneBoard_logo_rectangle = pygame.image.load('stable/StoneBoardPackagesstable/assets/stoneBoard_logo_rectangle.png').convert_alpha()
   stoneBoard_logo_rectangle = pygame.transform.scale(stoneBoard_logo_rectangle, (400, 200))
 
-  stoneBoard_server_ui = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/serverUi.png').convert_alpha()
+  stoneBoard_server_ui = pygame.image.load('stable/StoneBoardPackagesstable/assets/serverUi.png').convert_alpha()
   stoneBoard_server_ui = pygame.transform.scale(stoneBoard_server_ui, (800, 500))
 
-  exitButton = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/exit.png").convert_alpha()
-  joinButton = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/join.png").convert_alpha()
-  acceptButton = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/accept.png").convert_alpha()
-  boldFont = pygame.font.Font("experimental/StoneBoardPackagesexperimental/assets/fonts/Silkscreen/slkscr.ttf", 22)
-  bottomBar = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/bottom_bar.png").convert_alpha()
-  newUserScreen = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/newUserScreen.png").convert_alpha()
-  minimizeButton = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/menu_minimize.png").convert_alpha()
-
+  exitButton = pygame.image.load("stable/StoneBoardPackagesstablel/assets/exit.png").convert_alpha()
+  joinButton = pygame.image.load("stable/StoneBoardPackagesstable/assets/join.png").convert_alpha()
+  acceptButton = pygame.image.load("stable/StoneBoardPackagesstable/assets/accept.png").convert_alpha()
+  boldFont = pygame.font.Font("stable/StoneBoardPackagesstable/assets/fonts/Silkscreen/slkscr.ttf", 22)
+  bottomBar = pygame.image.load("stable/StoneBoardPackagesstable/assets/bottom_bar.png").convert_alpha()
+  newUserScreen = pygame.image.load("stable/StoneBoardPackagesstable/assets/newUserScreen.png").convert_alpha()
+  minimizeButton = pygame.image.load("stable/StoneBoardPackagesstable/assets/menu_minimize.png").convert_alpha()
+  
   class Button():
     def __init__(self, x, y, image, scale):
       width = image.get_width()
@@ -94,7 +95,7 @@ def startHome():
 
   while run:
     screen.fill(home_background_colour)
-    screen.blit(stoneBoard_experimentalRelease,(0,-35))
+
     screen.blit(stoneBoard_logo_rectangle,(1180,-135))
     screen.blit(stoneBoard_logo,(1200,10))
 
