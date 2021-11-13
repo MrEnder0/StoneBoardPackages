@@ -31,16 +31,26 @@ def createServer():
     os.renames("storage/servers/createdServer", serverPath)
 
 def loadServer():
-    serversFolder = "storage/servers/createdServer/"
-    serverName = "0"
-    openedServer = serverFolder + serverName
+    currentLine = 0
+    with open('storage/selectedLine.txt', 'r') as selectedLineFile:
+        selectedLine = selectedLineFile.read().rstrip('\n')
+
+    serversListFile = open('storage/serversList.txt', 'r')
+        
+    while currentLine < int(selectedLine):
+         serverName = serversListFile.readline().rstrip('\n')
+         currentLine += 1
+    print(serverName)
+        
+    serversFolder = "storage/servers/"
+    openedServer = serversFolder + serverName
     serverDataFile = openedServer + "/serverData.txt"
     serverOwnerFile = openedServer + "/serverOwner.txt"
     
-    f = open(serverDataFile, "r")
-    line = f.readline()
-    print(line)
-    f.close()
+    serverData = open(serverDataFile, "r")
+    data = serverData.readline()
+    print(data)
+    serverData.close()
 
 def readServers():
     #Read all folder names and put in varible
