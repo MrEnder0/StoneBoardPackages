@@ -134,6 +134,8 @@ def startHome():
 
       with open("storage/selectedLine.txt", "w") as selectedLine:
         selectedLine.write(str(menuSelectLine))
+      #with open("storage/lineCount.txt", "w") as lineCountFile:
+      #  lineCountFile.write(str(lineCount))
       
       if serverUiCreate.draw():
         clickSound()
@@ -141,7 +143,7 @@ def startHome():
       
       if serverUiAccept.draw():
         clickSound()
-        #add code for board launcher
+        loadServer()
 
       if serverUiExit.draw():
         clickSound()
