@@ -1,5 +1,5 @@
-from experimental.StoneBoardPackagesexperimental.soundManager import *
-from experimental.StoneBoardPackagesexperimental.home import *
+from stable.StoneBoardPackagesstable.soundManager import *
+from stable.StoneBoardPackagesstable.home import *
 from config import *
 import shutil
 import uuid
