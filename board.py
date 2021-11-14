@@ -10,7 +10,7 @@ def launchLoadedServer():
   pygame.init()
   pygame.display.set_caption("StoneBoard")
   (width, height) = (1920, 1080)
-  screen = pygame.display.set_mode((width, height), pygame.NOFRAME)
+  screen = pygame.display.set_mode((width, height), pygame.FULLSCREEN)
   board_background_colour = (250,250,250)
   screen.fill(board_background_colour)
   userFilePath = "storage/user.txt"
@@ -54,14 +54,14 @@ def launchLoadedServer():
       screen.blit(self.image, (self.rect.x, self.rect.y))
       return action
     
-  bottomBar = Button(-5, 1000, bottomBar, 0.34)
-  exitButton = Button(1828, 1008, exitButton, 0.13)
+  bottomBar = Button(-10, 1115, bottomBar, 0.32)
+  exitButton = Button(1710, 1125, exitButton, 0.13)
   
   while run:
     screen.fill(board_background_colour)
     screen.blit(stoneBoard_experimentalRelease,(0,-35))
-    screen.blit(stoneBoard_logo_rectangle,(1600,-135))
-    screen.blit(stoneBoard_logo,(1620,10))
+    screen.blit(stoneBoard_logo_rectangle,(1450,-135))
+    screen.blit(stoneBoard_logo,(1485,10))
     bottomBar.draw()
     
     if exitButton.draw():
