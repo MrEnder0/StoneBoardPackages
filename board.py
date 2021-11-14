@@ -59,6 +59,29 @@ def launchLoadedServer():
   
   while run:
     screen.fill(board_background_colour)
+
+    with open("storage/openedServer.txt", "r") as openedServer:
+      openedServer = openedServer.readline()
+
+    serverDataFile = openedServer + "/serverData.txt"
+    serverOwnerFile = openedServer + "/serverOwner.txt" 
+        
+    with open(serverDataFile, 'r') as serversList:
+      for line in serversList:
+        lineData = line.rstrip('\n')
+        lineData2 = eval(lineData)
+        print(lineData2)
+        fCord = lineData2[:-2]
+        sCord = lineData2[2:]
+        pygame.draw.line(screen, (0, 0, 255), fCord, sCord)
+        
+    #test = 0, 0, 200, 100
+    #test1 = test[:-2]
+    #print(test1)
+    #test2 = test[2:]
+    #print(test2)
+    #pygame.draw.line(screen, (0, 0, 255), test1, test2)
+
     screen.blit(stoneBoard_experimentalRelease,(0,-35))
     screen.blit(stoneBoard_logo_rectangle,(1450,-135))
     screen.blit(stoneBoard_logo,(1485,10))
