@@ -73,7 +73,7 @@ def launchLoadedServer():
         print(lineData2)
         fCord = lineData2[:-2]
         sCord = lineData2[2:]
-        pygame.draw.line(screen, (0, 0, 255), fCord, sCord)
+        pygame.draw.line(screen, (25, 25, 25), fCord, sCord, 10)
         
     #test = 0, 0, 200, 100
     #test1 = test[:-2]
