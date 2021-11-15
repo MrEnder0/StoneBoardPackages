@@ -139,6 +139,7 @@ def startHome():
       if serverUiAccept.draw():
         clickSound()
         loadServer()
+        time.sleep(0.4)
         launchLoadedServer()
 
       if serverUiExit.draw():
