@@ -78,7 +78,6 @@ def launchLoadedServer():
       if mouseTime >= 1:
         if preMouseOn:
           mouseTime = 0
-          clickSound()
           with open(serverDataFile, "a") as serverData:
             serverData.write(str(mousePos) + ", " + str(preMousePos) + "\n")
           preMousePos = pygame.mouse.get_pos()
