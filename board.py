@@ -15,10 +15,20 @@ def launchLoadedServer():
   screen.fill(board_background_colour)
   userFilePath = "storage/user.txt"
   menuSelectLine = 1
+  preMousePos = 0
+  preMouseOn = 0
+  mouseDelay = 1
+  mouseTime = 0
   run = True
   print("Opened Board")
   
   music()
+
+  with open("storage/openedServer.txt", "r") as openedServer:
+    openedServer = openedServer.readline()
+
+  serverDataFile = openedServer + "/serverData.txt"
+  serverOwnerFile = openedServer + "/serverOwner.txt" 
 
   #Experimental indicator
   if Experintal == True:
@@ -59,21 +69,40 @@ def launchLoadedServer():
   
   while run:
     screen.fill(board_background_colour)
-
-    with open("storage/openedServer.txt", "r") as openedServer:
-      openedServer = openedServer.readline()
-
-    serverDataFile = openedServer + "/serverData.txt"
-    serverOwnerFile = openedServer + "/serverOwner.txt" 
-        
+    left, middle, right = pygame.mouse.get_pressed()
+    mousePos = pygame.mouse.get_pos()
+    charactersToRemove = "()"
+ 
+    if left:
+      mouseTime += 0.08
+      if mouseTime >= 1:
+        if preMouseOn:
+          mouseTime = 0
+          clickSound()
+          with open(serverDataFile, "a") as serverData:
+            serverData.write(str(mousePos) + ", " + str(preMousePos) + "\n")
+          preMousePos = pygame.mouse.get_pos()
+        else:
+          mouseTime = 0
+          preMouseOn = 1
+          clickSound()
+          with open(serverDataFile, "a") as serverData:
+            serverData.write(str(mousePos) + ", " + str(mousePos) + "\n")
+          preMousePos = pygame.mouse.get_pos()
+    else:
+      mouseTime = 0
+      preMouseOn = 0
+    
     with open(serverDataFile, 'r') as serversList:
       for line in serversList:
-        lineData = line.rstrip('\n')
+        lineData = line
+        for character in charactersToRemove:
+          lineData = lineData.replace(character, "")
         lineData2 = eval(lineData)
-        print(lineData2)
         fCord = lineData2[:-2]
         sCord = lineData2[2:]
         pygame.draw.line(screen, (25, 25, 25), fCord, sCord, 10)
+        #print("loaded data: " + lineData)
         
     #test = 0, 0, 200, 100
     #test1 = test[:-2]
