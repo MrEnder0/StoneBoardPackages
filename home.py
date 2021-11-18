@@ -49,8 +49,8 @@ def startHome():
   stoneBoard_logo_rectangle = pygame.transform.scale(stoneBoard_logo_rectangle, (400, 200))
   stoneBoard_server_ui = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/serverUi.png').convert_alpha()
   stoneBoard_server_ui = pygame.transform.scale(stoneBoard_server_ui, (800, 500))
-  menuSelectionBox = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/menuSelectionBox.png').convert_alpha()
-  menuSelectionBox = pygame.transform.scale(menuSelectionBox, (700, 40))
+  menuSelectionBox = pygame.image.load('experimental/StoneBoardPackagesexperimental/assets/selectionBox.png').convert_alpha()
+  menuSelectionBox = pygame.transform.scale(menuSelectionBox, (660, 40))
   exitButton = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/exit.png").convert_alpha()
   joinButton = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/join.png").convert_alpha()
   acceptButton = pygame.image.load("experimental/StoneBoardPackagesexperimental/assets/accept.png").convert_alpha()
@@ -116,7 +116,7 @@ def startHome():
            lineText = lineText[:-1]
            screen.blit(boldFont.render(str(lineText), 0, (200, 200, 240)), (450, 260 + lineDistance))
 
-      screen.blit(menuSelectionBox,(375,250 + menuSelectLine * 40))
+      screen.blit(menuSelectionBox,(400,250 + menuSelectLine * 40))
       key_input = pygame.key.get_pressed()   
       if key_input[pygame.K_UP]:
         if not menuSelectLine == 1:
