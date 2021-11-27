@@ -102,13 +102,6 @@ def launchLoadedServer():
         sCord = lineData2[2:]
         pygame.draw.line(screen, (25, 25, 25), fCord, sCord, 10)
         #print("loaded data: " + lineData)
-        
-    #test = 0, 0, 200, 100
-    #test1 = test[:-2]
-    #print(test1)
-    #test2 = test[2:]
-    #print(test2)
-    #pygame.draw.line(screen, (0, 0, 255), test1, test2)
 
     screen.blit(stoneBoard_experimentalRelease,(0,-35))
     screen.blit(stoneBoard_logo_rectangle,(1450,-135))
