@@ -66,12 +66,12 @@ def launchLoadedServer():
     
   bottomBar = Button(-10, 1115, bottomBar, 0.32)
   exitButton = Button(1710, 1125, exitButton, 0.13)
+  charactersToRemove = "()"
   
   while run:
     screen.fill(board_background_colour)
     left, middle, right = pygame.mouse.get_pressed()
     mousePos = pygame.mouse.get_pos()
-    charactersToRemove = "()"
  
     if left:
       mouseTime += 0.08
